@@ -1,6 +1,6 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "book-club",
+  "name": "irfanabduhu",
   "description": "Book club presentation and reading guide generator",
   "owner": {
     "name": "Irfanul Hoque"
