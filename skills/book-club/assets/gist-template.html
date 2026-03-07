@@ -537,7 +537,8 @@
 (function() {
   const slides = document.querySelectorAll('.slide');
   const total = slides.length;
-  let cur = 0;
+  let cur = parseInt(location.hash.replace('#slide-',''),10) || 0;
+  if (cur < 0 || cur >= total) cur = 0;
 
   const fill = document.getElementById('progressFill');
   const counter = document.getElementById('slideCounter');
@@ -574,7 +575,11 @@
     nav.querySelectorAll('button').forEach((b,i) => b.classList.toggle('active', i===cur));
   }
 
-  function go(n) { if(n>=0&&n<total){cur=n;update();} }
+  function go(n) { if(n>=0&&n<total){cur=n;location.hash='slide-'+n;update();} }
+  window.addEventListener('hashchange', () => {
+    const h = parseInt(location.hash.replace('#slide-',''),10);
+    if (!isNaN(h) && h >= 0 && h < total && h !== cur) { cur = h; update(); }
+  });
   function openSB() { sidebar.classList.add('open'); overlay.classList.add('visible'); toggle.classList.add('hidden'); }
   function closeSB() { sidebar.classList.remove('open'); overlay.classList.remove('visible'); toggle.classList.remove('hidden'); }
 
