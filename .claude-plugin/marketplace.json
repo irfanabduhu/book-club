@@ -7,7 +7,7 @@
   },
   "plugins": [
     {
-      "name": "book-club",
+      "name": "readweave",
       "description": "Distill books and web writings into elegant presentations and reading guides. Includes /read (single book), /study (multi-book), /digest (web article), and /crawl (blog index) commands.",
       "author": {
         "name": "Irfanul Hoque"

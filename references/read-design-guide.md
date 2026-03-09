@@ -1,4 +1,4 @@
-# Book Club Slide Design Guide
+# ReadWeave Slide Design Guide
 
 ## Color Palette
 

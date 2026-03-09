@@ -3,7 +3,7 @@ description: "Distill a single book into a reading guide and slide presentation.
 argument-hint: "[path to .epub or book file]"
 ---
 
-# Book Club Skill
+# ReadWeave Skill
 
 You will create two outputs from a book file:
 1. A comprehensive **markdown reading guide** (`[book-name]-reading-guide.md`)

@@ -1,4 +1,4 @@
-# Book Club Plugin
+# ReadWeave Plugin
 
 A Claude Code plugin that distills books and web writings into elegant presentations and reading guides.
 
@@ -6,10 +6,10 @@ A Claude Code plugin that distills books and web writings into elegant presentat
 
 | Command | Scope | Input | Output |
 |---------|-------|-------|--------|
-| `/book-club:read` | Single book | `.epub`, `.pdf`, or `.txt` file | HTML slides + markdown reading guide |
-| `/book-club:study` | Multiple books | Multiple book files | Unified HTML slides + markdown study guide |
-| `/book-club:digest` | Single web article | URL to article or essay | HTML slides |
-| `/book-club:crawl` | Blog or writings page | URL to index/articles page | Unified HTML slides grouped by thematic nets |
+| `/readweave:read` | Single book | `.epub`, `.pdf`, or `.txt` file | HTML slides + markdown reading guide |
+| `/readweave:study` | Multiple books | Multiple book files | Unified HTML slides + markdown study guide |
+| `/readweave:digest` | Single web article | URL to article or essay | HTML slides |
+| `/readweave:crawl` | Blog or writings page | URL to index/articles page | Unified HTML slides grouped by thematic nets |
 
 ## Prerequisites
 
@@ -34,10 +34,10 @@ These are only needed if you work with scanned PDFs. Text-based PDFs, EPUBs, and
 
 ```bash
 # Add the marketplace
-claude plugin marketplace add irfanabduhu/book-club
+claude plugin marketplace add irfanabduhu/readweave
 
 # Install the plugin
-claude plugin install book-club@irfanabduhu
+claude plugin install readweave@irfanabduhu
 ```
 
 Or use the interactive plugin browser:
@@ -55,36 +55,36 @@ claude plugin marketplace update irfanabduhu
 ### Load per-session (alternative)
 
 ```bash
-git clone https://github.com/irfanabduhu/book-club.git ~/book-club
-claude --plugin-dir ~/book-club
+git clone https://github.com/irfanabduhu/readweave.git ~/readweave
+claude --plugin-dir ~/readweave
 ```
 
 ## Usage
 
 ```bash
 # Distill a single book
-/book-club:read path/to/book.epub
+/readweave:read path/to/book.epub
 
 # Study multiple books together
-/book-club:study path/to/book1.pdf path/to/book2.epub path/to/book3.txt
+/readweave:study path/to/book1.pdf path/to/book2.epub path/to/book3.txt
 
 # Deep dive into a web article
-/book-club:digest https://paulgraham.com/greatwork.html
+/readweave:digest https://paulgraham.com/greatwork.html
 
 # Crawl a blog and weave articles into thematic nets
-/book-club:crawl https://paulgraham.com/articles.html
+/readweave:crawl https://paulgraham.com/articles.html
 ```
 
 ## How it works
 
-### /book-club:read — Single book distillation
+### /readweave:read — Single book distillation
 1. **Extract & Read** — Detects file type (auto-OCRs scanned PDFs), launches parallel agents to read chapters simultaneously
 2. **Analyze & Select** — Synthesizes findings into 25-35 best excerpts across the book's arc
 3. **Margin Annotations** — Writes analytical margin notes that connect, historicize, and surface hidden implications
 4. **Generate Outputs** — Creates both the markdown reading guide and HTML slide presentation in parallel
 5. **Refine** — Audits margin note quality, checks flow, verifies consistency between outputs
 
-### /book-club:study — Multi-book intellectual tracing
+### /readweave:study — Multi-book intellectual tracing
 1. **Extract & Read All Books** — Parallel extraction across all books simultaneously
 2. **Curate & Analyze** — Builds argument maps per book, selects 15-25 excerpts each
 3. **Cross-Book Analysis** — Identifies conceptual threads, determines reading order, plans narrative arc
@@ -92,13 +92,13 @@ claude --plugin-dir ~/book-club
 5. **Generate Outputs** — Creates unified study guide and slide presentation (chunked generation for 4+ books)
 6. **Refine** — Audits cross-references, checks balance, verifies arc coherence
 
-### /book-club:digest — Single article deep dive
+### /readweave:digest — Single article deep dive
 1. **Fetch & Extract** — Retrieves article, extracts 8-20 candidate passages
 2. **Analyze & Select** — Maps the argument, selects 8-15 excerpts
 3. **Margin Annotations** — Writes contextual, analytical margin notes
 4. **Generate HTML Slides** — Produces a single-file presentation
 
-### /book-club:crawl — Blog weaving
+### /readweave:crawl — Blog weaving
 1. **Discover** — Fetches index page, extracts all article links and metadata
 2. **Map & Group** — Classifies articles into 3-7 thematic nets from titles and descriptions
 3. **Fetch & Extract** — Parallel agents fetch full articles per net, extract candidate passages
