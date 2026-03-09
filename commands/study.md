@@ -212,6 +212,15 @@ For each selected excerpt, write **2-3 margin notes**. Follow the same quality s
 - **Hidden implications** — surface what the reader might miss
 - **Concrete** — use specific examples, named thinkers, real events
 
+### Prose voice:
+- Write in a calm, literate register — the tone of a thoughtful reader's pencil notes in the margin, not a lecturer or enthusiast
+- Favor observations that unfold naturally over declarations that announce themselves
+- Avoid rhetorical questions used for emphasis, exclamation marks, and breathless discovery language ("This is the crucial move", "Here we see the key insight", "This changes everything")
+- Let connections speak for themselves — state them plainly rather than dramatizing them
+- The best margin notes sound like something a well-read friend might write in pencil — brief, specific, genuinely clarifying, never performing cleverness
+
+This voice also applies to all commentary prose: overview slides, transition slides, synthesis slides, and the study guide.
+
 ---
 
 ## Phase 5a: Generate Markdown Study Guide

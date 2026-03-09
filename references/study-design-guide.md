@@ -228,6 +228,10 @@ Assign colors in the order books appear in the recommended reading order:
 
 The `data-book` attribute controls the subtle left-border color on excerpt slide pages and the marker color on book cards, transition slides, and evolution panels.
 
+## Prose Voice
+
+Inherits the read skill's prose voice guidance. All generated prose — margin notes, commentary, transition framing, evolution analysis, discussion questions — should be written in a calm, literate register. The tone is that of a thoughtful reader writing in pencil, not a lecturer or enthusiast. Let connections and observations speak for themselves rather than dramatizing them.
+
 ## Margin Note Quality Criteria
 
 Inherits all criteria from read skill, plus:

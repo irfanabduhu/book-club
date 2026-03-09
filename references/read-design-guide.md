@@ -135,6 +135,10 @@ Body background: `#E8E0D4`
 </div>
 ```
 
+## Prose Voice
+
+All generated prose — margin notes, commentary, overview text, discussion questions — should be written in a calm, literate register. The tone is that of a thoughtful reader writing in pencil, not a lecturer or enthusiast. Favor observations that unfold naturally over declarations that announce themselves. Avoid rhetorical questions for emphasis, exclamation marks, and breathless discovery language. Let connections speak for themselves rather than dramatizing them. The best notes sound like something a well-read friend might pencil in the margin: brief, specific, genuinely clarifying, never performing cleverness.
+
 ## Margin Note Quality Criteria
 
 ### DO:
