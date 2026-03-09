@@ -25,26 +25,110 @@ Follow the seven phases below. Phases 5a and 5b are independent and can run in p
 1. Create a unique temp directory per book: `mktemp -d /tmp/book-extract-XXXXXX` then `unzip book.epub -d $TMPDIR`
 2. Read OPF/NCX to identify chapter order
 3. Launch **3-5 parallel Explore agents per book**, each covering a chapter range
-4. Each agent extracts: key arguments, quotable passages, chapter themes, striking metaphors
+4. Give each agent the **detailed extraction brief** below
 
 **For `.pdf` files:**
 - Read with page ranges, launch parallel agents per page range
+- Give each agent the same extraction brief
 
 **For plain text / `.txt` files:**
 - Split into logical sections for parallel processing
+- Give each agent the same extraction brief
 
 ### Critical: Launch extraction for ALL books simultaneously. If you have 3 books, you should have 9-15 agents running at once. This is the key performance optimization.
 
+### Extraction Brief (include this in every agent prompt)
+
+Each agent must read its assigned chapters **slowly and completely** — do not skim. For each chapter, extract:
+
+**1. Candidate passages (the most important output)**
+
+Collect **8-15 candidate passages per chapter**. This is deliberately more than you will use — over-extraction is essential. You cannot curate well from a thin pool.
+
+For each candidate passage, capture:
+- The **exact text**, preserving the author's wording precisely. Do not paraphrase, compress, or "clean up" the prose.
+- **Full paragraphs**, not isolated sentences. A good excerpt is typically 3-8 sentences (60-200 words). If the idea needs two paragraphs to land, capture both. An excerpt that ends mid-thought is worse than one that runs slightly long.
+- The **chapter number, chapter title, and section heading** (if any) where the passage appears, so it can be precisely cited later.
+- A **one-line note** on why this passage matters — what idea it captures.
+
+**2. What to look for — the seven passage types:**
+
+Hunt specifically for these. Most chapters will contain 2-4 of these types:
+
+- **Thesis crystallizations**: Where the author states a core claim with maximum clarity and force. These are often mid-chapter, NOT in introductions — authors warm up before making their sharpest formulations.
+- **Defining passages**: Where a key concept is introduced, named, or given its clearest definition. These anchor the reader's understanding. Capture the full paragraph around the definition, not just the sentence with the term.
+- **Pivotal arguments**: Where the author makes a logical move that the rest of the book depends on — an inference, a distinction, a reductio, a thought experiment. These are the structural load-bearing passages.
+- **Striking examples and cases**: Where an abstract idea is made concrete through a historical case, an analogy, a narrative, or a thought experiment. Often the most memorable passages in a book. (Kuhn's duck-rabbit, Rawls's veil of ignorance, Arendt's Eichmann — the example *is* the idea.)
+- **Rhetorical high points**: Where the author's prose reaches peak intensity — passages that are not just true but beautifully or powerfully said. These often come at chapter endings or in moments of polemic. The prose quality matters because it makes the idea stick.
+- **Self-revisions and qualifications**: Where the author complicates, limits, or walks back a previous claim. These are easy to miss but essential in a multi-book study — they are where intellectual honesty lives.
+- **Provocation and challenge**: Where the author deliberately challenges the reader's assumptions or the received wisdom of their field. Passages that make you stop and argue back.
+
+**3. What NOT to extract:**
+
+- **Throat-clearing**: Introductory paragraphs that preview the chapter without making a claim ("In this chapter, I will argue that..."). Wait for the actual argument.
+- **Literature review**: Passages that merely summarize other thinkers' positions without the author's own analytical voice. Exception: when the summary itself reveals the author's interpretive framework.
+- **Methodological boilerplate**: Passages about the book's structure, organization, or scope — unless the author's method IS a key idea.
+- **Repetition**: If the same idea is stated in three places, capture the strongest formulation and note the others exist.
+- **Fragmentary sentences**: Never extract a sentence that begins with "This" or "It" where the referent is in the previous (uncaptured) paragraph. If you must include such a passage, extend the excerpt upward to include the antecedent.
+
+**4. Chapter-level context:**
+
+For each chapter also record:
+- The chapter's **central claim** in one sentence
+- How it **advances the book's argument** — what does this chapter add that the previous one didn't?
+- Any **key terms introduced or redefined** in this chapter
+- **Internal cross-references** — does the author refer back to earlier chapters or forward to later ones?
+
 ---
 
-## Phase 2: Individual Analysis
+## Phase 2: Curate & Analyze
 
-For each book, synthesize its agents' findings into:
-1. **Core thesis** — the book's central argument in 2-3 sentences
-2. **Structural outline** — how the argument builds
-3. **15-25 best excerpts** per book (fewer per book than single-book mode, since space is shared)
-4. **Key concepts introduced** — what new vocabulary, frameworks, or ideas does this book contribute?
-5. **Publication context** — when was it written, what was the author responding to?
+This phase is where raw extraction becomes a study. Work through it carefully.
+
+### 2a. Build Each Book's Argument Map
+
+For each book, synthesize the agents' findings into:
+1. **Core thesis** — the book's central argument in 2-3 sentences. This should be specific enough that someone who disagrees with the author could articulate what they disagree with.
+2. **Argument structure** — how the book builds from premises to conclusion. Map the logical dependencies: which chapters depend on which? What is assumed vs. argued? Where is the argument strongest and weakest?
+3. **Key concepts** — what new vocabulary, frameworks, or ideas does this book contribute? For each concept, note where it is introduced and where it does the most analytical work.
+4. **Publication context** — when was it written? What was the author responding to? What was the state of the field? What events or debates prompted this book?
+
+### 2b. Select Excerpts (the critical step)
+
+From the pool of candidates across all books, select **15-25 excerpts per book**. This is NOT a simple "pick the best" — selection must be strategic.
+
+**The three-pass selection process:**
+
+**Pass 1 — The non-negotiables.** For each book, identify the passages that you *cannot* leave out — the ones where the core thesis is stated most powerfully, where the defining concept is introduced, where the pivotal argument is made. These are typically 5-8 per book. If you can't find them, your agents missed them — go back and re-read those chapters.
+
+**Pass 2 — The arc builders.** Select passages that fill in the argument's progression. After Pass 1, you have the peaks; now add the connective tissue. Choose passages that show *how* the author gets from one peak to the next. These build the reader's understanding so the big moments land.
+
+**Pass 3 — The texture.** Add passages that provide the distinctive flavor of the author's thinking — the memorable examples, the surprising asides, the rhetorical high points, the honest qualifications. These make the difference between a study that is *correct* and one that is *alive*.
+
+**Selection quality tests (apply to every excerpt):**
+
+1. **The idea test**: Can you state what idea this passage captures in one sentence? If you can't, the passage may be atmospheric but not substantive — cut it unless it's a rare rhetorical high point.
+2. **The stand-alone test**: Can someone who hasn't read the book understand this passage? If it depends on context from the surrounding pages, either extend the excerpt or cut it.
+3. **The substitution test**: Could a different passage from the same book capture the same idea equally well? If yes, you haven't found the *best* formulation yet — go back to the candidate pool.
+4. **The redundancy test**: Does this passage capture an idea already represented by another selected excerpt? If so, keep only the stronger one — unless both are needed to show evolution within the book.
+5. **The cross-book test** (unique to studies): Does this passage connect to or illuminate a passage you've selected from another book? Prioritize excerpts that participate in cross-book threads — these are where the study earns its value over individual book presentations.
+
+**Passage length and integrity:**
+
+- **Minimum**: 40 words / 2 sentences. Anything shorter is a quotation, not an excerpt.
+- **Sweet spot**: 80-180 words / 3-8 sentences. Long enough to develop the idea, short enough for a slide.
+- **Maximum**: ~250 words. If longer, use `<span class="elide">[…]</span>` to trim non-essential clauses — but never elide the argumentative core.
+- **Never truncate mid-thought**. An excerpt must begin and end at natural boundaries — the start/end of a paragraph, or a clear sentence break where no antecedent is left dangling.
+- **Preserve the author's exact wording**. Do not modernize spelling, "fix" grammar, or simplify vocabulary. If the author wrote "incommensurable" and not "incompatible," that word choice IS the idea.
+
+### 2c. Verify Excerpts Against Source
+
+After selection, **go back to the source material** and re-read each selected passage in its original context. Check:
+- Is the wording exactly correct? (Agents sometimes introduce small errors — missing words, swapped phrases, modernized punctuation.)
+- Does the excerpt still work when you read the sentences immediately before and after it? Or did you cut too aggressively?
+- Is the chapter/section attribution correct?
+
+Fix any errors before proceeding. An excerpt with a wrong word is worse than no excerpt at all — it attributes something to the author they didn't say.
 
 ---
 

@@ -458,20 +458,6 @@
   .nav-arrows button:hover { background: var(--ink); color: var(--page); border-color: var(--ink); }
   .nav-arrows button:disabled { opacity: 0.25; cursor: default; background: var(--page); color: var(--ink-lighter); }
 
-  .kbd-hint {
-    position: fixed; bottom: 28px; left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Inter', sans-serif; font-size: 0.5rem;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    color: rgba(0,0,0,0.2); z-index: 900;
-  }
-  .kbd-hint kbd {
-    display: inline-block; padding: 1px 5px;
-    border: 1px solid rgba(0,0,0,0.1); border-radius: 2px;
-    font-family: 'Inter', sans-serif; font-size: 0.5rem;
-    background: rgba(255,255,255,0.5); margin: 0 1px;
-  }
-
   @media (max-width: 900px) {
     .margin { display: none; }
     .page { border-radius: 3px; width: 100%; max-width: 660px; }
@@ -490,7 +476,6 @@
     .title-page h1 { font-size: 2rem; }
     .excerpt { font-size: 1.1rem; line-height: 1.8; }
     .sidebar { width: 85vw; }
-    .kbd-hint { display: none; }
   }
 </style>
 </head>
