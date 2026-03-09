@@ -1,0 +1,152 @@
+---
+name: digest
+description: |
+  Deep dive into a single web article. Trigger when user provides a URL to an article, essay, or blog post and wants to understand, unpack, or present it. Fetches the article, extracts key passages and arguments, and produces an elegant single-file HTML slide presentation with direct excerpts and analytical margin annotations. Invoke with /digest.
+argument-hint: "[URL to article or essay]"
+---
+
+# Digest Skill
+
+You will create one output from a web article URL:
+- An elegant **HTML slide presentation** (`[article-name]-digest.html`)
+
+Follow the four phases below in order.
+
+---
+
+## Phase 1: Fetch & Extract
+
+### Fetch the article:
+
+1. Use WebFetch to retrieve the article content from the provided URL
+2. If the page is behind a paywall or returns an error, inform the user and stop
+3. Extract the article's **title**, **author**, **publication date** (if available), and **source/publication name**
+
+### Parse the content:
+
+- Strip navigation, ads, sidebars, and other non-content elements
+- Preserve the article's structure: headings, subheadings, paragraphs, block quotes
+- Note any images or diagrams that are central to the argument (describe them in annotations later)
+- If the article is very long (5000+ words), mentally divide it into logical sections for systematic extraction
+
+### Extract candidate passages:
+
+Collect **8-20 candidate passages** depending on article length. For a typical essay (1500-4000 words), aim for 10-15 candidates.
+
+For each candidate passage, capture:
+- The **exact text**, preserving the author's wording precisely
+- The **section or heading** where it appears (if any)
+- A **one-line note** on why this passage matters
+
+**What to look for — the five passage types:**
+
+- **Thesis crystallizations**: Where the author states their core claim with maximum clarity. In essays, these often appear 2-3 paragraphs in, not in the opening line.
+- **Key arguments**: Where the author makes a logical move the rest of the piece depends on — a distinction, an analogy, a reductio.
+- **Striking examples**: Where an abstract idea is made concrete through a case, story, or analogy. In blog essays, the example often *is* the argument.
+- **Rhetorical high points**: Where the prose reaches peak intensity — passages that are beautifully or powerfully said.
+- **Provocations**: Where the author challenges assumptions or received wisdom. The passages that make you stop and think.
+
+**What NOT to extract:**
+- Opening hooks or throat-clearing ("I've been thinking about X lately...")
+- Promotional content, calls to action, or self-references to other posts
+- Repetition — if the same idea appears twice, take the stronger formulation
+- Fragmentary sentences that depend on uncaptured context
+
+---
+
+## Phase 2: Analyze & Select
+
+### Map the argument:
+
+1. Identify the article's **core thesis** in one sentence
+2. Map its **structure** — how does the argument build? What is the logical progression?
+3. Note what the author is **responding to** — what assumption, trend, or opposing view prompted this piece?
+
+### Select excerpts:
+
+From the candidate pool, select **8-15 excerpts** for the presentation.
+
+**Two-pass selection:**
+
+**Pass 1 — The essentials.** The thesis statement, the key argument, the defining example. These are the 4-6 passages you cannot leave out. If you removed them, the article's argument would collapse.
+
+**Pass 2 — The texture.** Add passages that give the piece its distinctive voice — the memorable analogy, the sharp provocation, the honest qualification. These make the presentation feel alive rather than merely correct.
+
+**Selection quality tests:**
+1. **The idea test**: Can you state what this passage captures in one sentence?
+2. **The stand-alone test**: Can someone who hasn't read the article understand this passage?
+3. **The redundancy test**: Does another selected excerpt already capture this idea?
+
+**Passage length:**
+- Sweet spot: 40-150 words / 2-6 sentences. Articles are denser than books — excerpts should be tighter.
+- Never truncate mid-thought. Use `<span class="elide">[&hellip;]</span>` for minimal trims.
+- Preserve the author's exact wording.
+
+---
+
+## Phase 3: Write Margin Annotations
+
+For each selected excerpt, write **2-3 margin notes**.
+
+### Labels must be:
+- Descriptive concepts: "The Selection Pressure", "Convexity Argument", "Status Game", "Founder Mode"
+- Bad: "Key Point!", "Important!", "Note", "Interesting!"
+
+### Note body must be:
+- **Analytical, not summary** — never restate what the excerpt says
+- **Contextual** — connect to broader ideas, other thinkers, the author's other work, real-world implications
+- **Hidden implications** — surface what a casual reader might miss
+- **Concrete** — use specific references, named examples, real events
+
+### Quality test: Cover the excerpt text. Can someone learn something new from just the margin note? If not, rewrite it.
+
+---
+
+## Phase 4: Generate HTML Slides
+
+1. **Read the template** from the read skill's [assets/gist-template.html](../read/assets/gist-template.html)
+2. **Read the design guide** from the read skill's [references/design-guide.md](../read/references/design-guide.md) for HTML structure of each slide type
+3. **Replace placeholders**:
+   - `{{BOOK_TITLE}}` → the article's title (used in both `<title>` and sidebar header)
+   - `{{SIDEBAR_SUBTITLE}}` → "Author Name, Source/Date"
+4. **Populate slides** inside the `<div class="slides-wrapper">`:
+
+### Slide structure:
+
+- **Slide 0 — Title**: `class="slide active no-margin"` — article title, author, source, date, and an opening quotation from the piece. Include `begin-hint`.
+
+- **Slide 1 — Overview**: `class="slide no-margin"` — the article's core argument in brief. Use a visual diagram (concept-cards, or flow diagram) plus commentary. Frame what follows: "The following pages present [Author]'s argument *in [their] own words*."
+
+- **Slides 2 through N — Excerpts**: `class="slide"` — direct article excerpts with margin annotations. This is the bulk (8-15 slides). Each slide has:
+  - `page-chapter` label with the section heading (if any) or a descriptive label
+  - `page-divider`
+  - One or more `.excerpt` paragraphs (first excerpt on most slides gets `.drop-cap`)
+  - `page-source` citation (article title, author)
+  - `.margin` div with 2-3 `.margin-note` elements
+
+- **Slide N+1 — Discussion**: `class="slide no-margin"` — 4-6 thought-provoking questions using `.discussion-q` elements
+
+- **Slide N+2 — Closing**: `class="slide no-margin"` — the article's thesis distilled + a final quotation + author/title/source attribution
+
+### Formatting rules:
+- Use `<span class="elide">[&hellip;]</span>` for elisions within excerpts
+- Use `&mdash;` for em-dashes, `&lsquo;`/`&rsquo;` for single quotes, `&ldquo;`/`&rdquo;` for double quotes
+- Apply `drop-cap` class to the first `.excerpt` on most excerpt slides
+- Each slide needs a descriptive `data-title` attribute for the sidebar TOC
+
+### Slide count guidance:
+- Short article (<2000 words): 8-12 total slides
+- Medium article (2000-5000 words): 12-18 total slides
+- Long article (5000+ words): 18-25 total slides
+
+Save as `[article-name]-digest.html` in the working directory. Derive `[article-name]` from the article title: lowercase, kebab-case, drop articles.
+
+---
+
+## Important Notes
+
+- **Direct excerpts only**: The presentation shows the author's actual words. Margin notes provide the analysis.
+- **Single-file HTML**: Completely self-contained. All CSS/JS inline. Only external dependency is Google Fonts CDN.
+- **Preserve the aesthetic**: Reuse the book-page design from the read skill's template — parchment colors, Garamond fonts, Caveat margin notes, drop caps.
+- **Attribute the source**: Always include the original URL, author name, and publication date in the title slide and closing slide.
+- **The margin notes are the value-add**: Anyone can read an article. The margin notes — analytical, contextual, concrete — are what make this a *digest* rather than a bookmark.

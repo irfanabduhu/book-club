@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "irfanabduhu",
-  "description": "Distill books into elegant presentations and reading guides",
+  "description": "Distill books and web writings into elegant presentations and reading guides",
   "owner": {
     "name": "Irfanul Hoque"
   },
@@ -12,7 +12,7 @@
       "author": {
         "name": "Irfanul Hoque"
       },
-      "source": "./",
+      "source": "../skills/read",
       "category": "education"
     },
     {
@@ -21,7 +21,25 @@
       "author": {
         "name": "Irfanul Hoque"
       },
-      "source": "./",
+      "source": "../skills/study",
+      "category": "education"
+    },
+    {
+      "name": "digest",
+      "description": "Deep dive into a single web article or essay. Fetches, extracts key passages, and produces an HTML slide presentation with analytical margin annotations.",
+      "author": {
+        "name": "Irfanul Hoque"
+      },
+      "source": "../skills/digest",
+      "category": "education"
+    },
+    {
+      "name": "crawl",
+      "description": "Crawl a blog or writings page, group articles into thematic nets, and weave them into a unified HTML slide presentation tracing the author's ideas.",
+      "author": {
+        "name": "Irfanul Hoque"
+      },
+      "source": "../skills/crawl",
       "category": "education"
     }
   ]
