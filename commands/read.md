@@ -1,7 +1,5 @@
 ---
-name: read
-description: |
-  Distill a single book into a reading guide and slide presentation. Trigger on requests to read, distill, or present a book, or when user provides an epub/PDF/text file and wants to understand or present it. Produces a comprehensive markdown reading guide and an elegant single-file HTML slide presentation with direct excerpts and analytical margin annotations. Invoke with /read.
+description: "Distill a single book into a reading guide and slide presentation. Supports epub, PDF (including scanned), and text files."
 argument-hint: "[path to .epub or book file]"
 ---
 
@@ -190,8 +188,8 @@ Save as `[book-name]-reading-guide.md` in the working directory. Use kebab-case 
 
 ## Phase 4b: Generate HTML Slides
 
-1. **Read the template** from [assets/gist-template.html](assets/gist-template.html)
-2. **Read the design guide** from [references/design-guide.md](references/design-guide.md) for HTML structure of each slide type
+1. **Read the template**: Use the Glob tool to find `**/gist-template.html` within this plugin's installation directory, then read it with the Read tool. This file contains the full HTML/CSS/JS scaffold for the slide presentation.
+2. **Read the design guide**: Use the Glob tool to find `**/read-design-guide.md` within this plugin's installation directory, then read it. It documents the HTML structure for each slide type.
 3. **Replace placeholders**:
    - `{{BOOK_TITLE}}` → the book's title (used in both `<title>` and sidebar header)
    - `{{SIDEBAR_SUBTITLE}}` → "Author Name, Year"

@@ -7,39 +7,12 @@
   },
   "plugins": [
     {
-      "name": "read",
-      "description": "Distill a book into an elegant HTML slide presentation and a comprehensive markdown reading guide. Supports epub, PDF (including scanned), and text files.",
+      "name": "book-club",
+      "description": "Distill books and web writings into elegant presentations and reading guides. Includes /read (single book), /study (multi-book), /digest (web article), and /crawl (blog index) commands.",
       "author": {
         "name": "Irfanul Hoque"
       },
-      "source": "./skills/read",
-      "category": "education"
-    },
-    {
-      "name": "study",
-      "description": "Trace intellectual evolution across multiple books. Analyzes how ideas develop and transform, suggests reading order, and produces a unified HTML slide presentation with cross-book analysis.",
-      "author": {
-        "name": "Irfanul Hoque"
-      },
-      "source": "./skills/study",
-      "category": "education"
-    },
-    {
-      "name": "digest",
-      "description": "Deep dive into a single web article or essay. Fetches, extracts key passages, and produces an HTML slide presentation with analytical margin annotations.",
-      "author": {
-        "name": "Irfanul Hoque"
-      },
-      "source": "./skills/digest",
-      "category": "education"
-    },
-    {
-      "name": "crawl",
-      "description": "Crawl a blog or writings page, group articles into thematic nets, and weave them into a unified HTML slide presentation tracing the author's ideas.",
-      "author": {
-        "name": "Irfanul Hoque"
-      },
-      "source": "./skills/crawl",
+      "source": "./",
       "category": "education"
     }
   ]

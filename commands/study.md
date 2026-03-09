@@ -1,7 +1,5 @@
 ---
-name: study
-description: |
-  Trace intellectual evolution across multiple books. Trigger when user provides multiple book files or asks to study, compare, or trace ideas across an author's or tradition's body of work. Analyzes how ideas develop and transform, suggests reading order, and produces a unified HTML slide presentation and a markdown study guide. Invoke with /study.
+description: "Trace intellectual evolution across multiple books. Analyzes how ideas develop and transform, suggests reading order, and produces a unified HTML slide presentation with cross-book analysis."
 argument-hint: "[paths to multiple .epub, .pdf, or book files]"
 ---
 
@@ -260,8 +258,8 @@ For studies with 2-3 books, single-pass generation is acceptable if the total sl
 
 ### Setup
 
-1. **Read the template** from [assets/study-template.html](assets/study-template.html)
-2. **Read the design guide** from [references/design-guide.md](references/design-guide.md)
+1. **Read the template**: Use the Glob tool to find `**/study-template.html` within this plugin's installation directory, then read it with the Read tool. This file contains the full HTML/CSS/JS scaffold for the multi-book slide presentation.
+2. **Read the design guide**: Use the Glob tool to find `**/study-design-guide.md` within this plugin's installation directory, then read it. It documents the HTML structure for multi-book slide types.
 3. **Replace placeholders**:
    - `{{STUDY_TITLE}}` → the study's title (e.g., "The Evolution of Incommensurability")
    - `{{SIDEBAR_SUBTITLE}}` → "Author Name" or "Author Name & Author Name"

@@ -1,7 +1,5 @@
 ---
-name: digest
-description: |
-  Deep dive into a single web article. Trigger when user provides a URL to an article, essay, or blog post and wants to understand, unpack, or present it. Fetches the article, extracts key passages and arguments, and produces an elegant single-file HTML slide presentation with direct excerpts and analytical margin annotations. Invoke with /digest.
+description: "Deep dive into a single web article or essay. Fetches, extracts key passages, and produces an HTML slide presentation with analytical margin annotations."
 argument-hint: "[URL to article or essay]"
 ---
 
@@ -104,8 +102,8 @@ For each selected excerpt, write **2-3 margin notes**.
 
 ## Phase 4: Generate HTML Slides
 
-1. **Read the template** from the read skill's [assets/gist-template.html](../read/assets/gist-template.html)
-2. **Read the design guide** from the read skill's [references/design-guide.md](../read/references/design-guide.md) for HTML structure of each slide type
+1. **Read the template**: Use the Glob tool to find `**/gist-template.html` within this plugin's installation directory, then read it with the Read tool. This file contains the full HTML/CSS/JS scaffold for the slide presentation.
+2. **Read the design guide**: Use the Glob tool to find `**/read-design-guide.md` within this plugin's installation directory, then read it. It documents the HTML structure for each slide type.
 3. **Replace placeholders**:
    - `{{BOOK_TITLE}}` → the article's title (used in both `<title>` and sidebar header)
    - `{{SIDEBAR_SUBTITLE}}` → "Author Name, Source/Date"
@@ -147,6 +145,6 @@ Save as `[article-name]-digest.html` in the working directory. Derive `[article-
 
 - **Direct excerpts only**: The presentation shows the author's actual words. Margin notes provide the analysis.
 - **Single-file HTML**: Completely self-contained. All CSS/JS inline. Only external dependency is Google Fonts CDN.
-- **Preserve the aesthetic**: Reuse the book-page design from the read skill's template — parchment colors, Garamond fonts, Caveat margin notes, drop caps.
+- **Preserve the aesthetic**: Reuse the book-page design from the template — parchment colors, Garamond fonts, Caveat margin notes, drop caps.
 - **Attribute the source**: Always include the original URL, author name, and publication date in the title slide and closing slide.
 - **The margin notes are the value-add**: Anyone can read an article. The margin notes — analytical, contextual, concrete — are what make this a *digest* rather than a bookmark.

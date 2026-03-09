@@ -1,7 +1,5 @@
 ---
-name: crawl
-description: |
-  Crawl a blog or writings page to discover articles, group them into thematic nets, and weave them into a unified HTML slide presentation. Trigger when user provides a URL to a blog index, articles page, or writings collection and wants to explore the author's ideas across multiple posts. Invoke with /crawl.
+description: "Crawl a blog or writings page, group articles into thematic nets, and weave them into a unified HTML slide presentation tracing the author's ideas."
 argument-hint: "[URL to blog index or writings page]"
 ---
 
@@ -152,8 +150,8 @@ For crawls with 4+ nets, use chunked generation:
 
 ### Setup:
 
-1. **Read the template** from the study skill's [assets/study-template.html](../study/assets/study-template.html)
-2. **Read the design guide** from the study skill's [references/design-guide.md](../study/references/design-guide.md) for multi-section slide types
+1. **Read the template**: Use the Glob tool to find `**/study-template.html` within this plugin's installation directory, then read it with the Read tool. This file contains the full HTML/CSS/JS scaffold for the multi-section slide presentation.
+2. **Read the design guide**: Use the Glob tool to find `**/study-design-guide.md` within this plugin's installation directory, then read it. It documents the HTML structure for multi-section slide types.
 3. **Replace placeholders**:
    - `{{STUDY_TITLE}}` → a title capturing the author's intellectual project (e.g., "Paul Graham on Thinking and Making")
    - `{{SIDEBAR_SUBTITLE}}` → "Author Name"
