@@ -12,6 +12,26 @@ Follow the four phases below in order.
 
 ---
 
+## Checkpoint System
+
+Before starting, check for existing checkpoints in `.readweave/[article-slug]/` (derive slug from the article title — lowercase, kebab-case, drop articles).
+
+**Read the checkpoint reference**: Use the Glob tool to find `**/checkpoints.md` within this plugin's installation directory, then read it for the full format specification.
+
+**Resume logic** — check in reverse order:
+1. If `annotations.md` exists → load it and skip to Phase 4 (HTML generation)
+2. If `selection.md` exists → load it and skip to Phase 3 (annotations)
+3. If `extraction.md` exists → load it and skip to Phase 2 (selection)
+4. If no checkpoints → start from Phase 1
+
+If resuming, report: "Found checkpoint for [phase]. Resuming from [next phase]..."
+
+If the user's input contains `--fresh`, ignore all checkpoints and start from scratch.
+
+**Save after each phase** — write the checkpoint file in the format specified by the checkpoint reference before proceeding to the next phase.
+
+---
+
 ## Phase 1: Fetch & Extract
 
 ### Fetch the article:
@@ -50,6 +70,8 @@ For each candidate passage, capture:
 - Repetition — if the same idea appears twice, take the stronger formulation
 - Fragmentary sentences that depend on uncaptured context
 
+### Checkpoint: Save `extraction.md` to `.readweave/[article-slug]/` with all candidate passages, article metadata, and section structure.
+
 ---
 
 ## Phase 2: Analyze & Select
@@ -80,6 +102,8 @@ From the candidate pool, select **8-15 excerpts** for the presentation.
 - Never truncate mid-thought. Use `<span class="elide">[&hellip;]</span>` for minimal trims.
 - Preserve the author's exact wording.
 
+### Checkpoint: Save `selection.md` to `.readweave/[article-slug]/` with the argument map, selected excerpts, and critical context.
+
 ---
 
 ## Phase 3: Write Margin Annotations
@@ -106,6 +130,8 @@ For each selected excerpt, write **2-3 margin notes**.
 This voice also applies to all commentary prose: overview slides and discussion questions.
 
 ### Quality test: Cover the excerpt text. Can someone learn something new from just the margin note? If not, rewrite it.
+
+### Checkpoint: Save `annotations.md` to `.readweave/[article-slug]/` with all annotated excerpts, overview prose, and discussion questions.
 
 ---
 

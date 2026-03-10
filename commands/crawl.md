@@ -14,6 +14,26 @@ Follow the six phases below in order.
 
 ---
 
+## Checkpoint System
+
+Before starting, check for existing checkpoints in `.readweave/[crawl-slug]/` (derive slug from the author or theme — e.g., `paul-graham-crawl`).
+
+**Read the checkpoint reference**: Use the Glob tool to find `**/checkpoints.md` within this plugin's installation directory, then read it for the full format specification.
+
+**Resume logic** — check in reverse order:
+1. If `annotations.md` exists → load it and skip to Phase 6 (HTML generation)
+2. If `selection.md` exists → load it and skip to Phase 5 (annotations)
+3. If `extraction-[thread-slug].md` files exist → load them and skip to Phase 4 (curation). If only some threads have extraction checkpoints, extract only the missing ones.
+4. If no checkpoints → start from Phase 1
+
+If resuming, report: "Found checkpoint for [phase]. Resuming from [next phase]..."
+
+If the user's input contains `--fresh`, ignore all checkpoints and start from scratch.
+
+**Save after each phase** — write the checkpoint file in the format specified by the checkpoint reference before proceeding to the next phase.
+
+---
+
 ## Phase 1: Discover
 
 ### Fetch the index page:
@@ -97,6 +117,8 @@ Same five passage types as the digest skill (thesis crystallizations, key argume
 - Dated references that don't serve the intellectual thread (e.g., "last week's news about X")
 - Promotional or meta-blogging content ("Sorry for not posting lately")
 
+### Checkpoint: Save `extraction-[thread-slug].md` per thread to `.readweave/[crawl-slug]/` with all candidate passages, article metadata, and per-article context.
+
 ---
 
 ## Phase 4: Curate & Weave
@@ -117,6 +139,8 @@ Same five passage types as the digest skill (thesis crystallizations, key argume
 1. **The thread test**: Does this excerpt advance the thread's intellectual arc, or is it just a good passage that happens to be in this thread?
 2. **The stand-alone test**: Can someone unfamiliar with the article understand this passage?
 3. **The evolution test**: If this author wrote about this idea multiple times, have you selected the passages that best show how the idea developed?
+
+### Checkpoint: Save `selection.md` to `.readweave/[crawl-slug]/` with all selected excerpts, thread analysis, cross-thread connections, and ordering rationale.
 
 ---
 
@@ -145,6 +169,8 @@ For each selected excerpt, write **2-3 margin notes**.
 This voice also applies to all commentary prose: overview slides, transition slides, synthesis slides, and discussion questions.
 
 ### At least 25% of margin notes should make cross-article or cross-thread connections. This is what makes a crawl more than a reading list.
+
+### Checkpoint: Save `annotations.md` to `.readweave/[crawl-slug]/` with all annotated excerpts (including cross-thread notes), overview prose, and discussion questions.
 
 ---
 

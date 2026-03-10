@@ -13,6 +13,26 @@ Follow the five phases below in order. Phases 4a and 4b are independent and can 
 
 ---
 
+## Checkpoint System
+
+Before starting, check for existing checkpoints in `.readweave/[book-slug]/` (derive slug from the book filename — lowercase, kebab-case, no extension, drop articles).
+
+**Read the checkpoint reference**: Use the Glob tool to find `**/checkpoints.md` within this plugin's installation directory, then read it for the full format specification.
+
+**Resume logic** — check in reverse order:
+1. If `annotations.md` exists → load it and skip to Phase 4 (HTML generation)
+2. If `selection.md` exists → load it and skip to Phase 3 (annotations)
+3. If `extraction.md` exists → load it and skip to Phase 2 (selection)
+4. If no checkpoints → start from Phase 1
+
+If resuming, report: "Found checkpoint for [phase]. Resuming from [next phase]..."
+
+If the user's input contains `--fresh`, ignore all checkpoints and start from scratch.
+
+**Save after each phase** — write the checkpoint file in the format specified by the checkpoint reference before proceeding to the next phase.
+
+---
+
 ## Phase 1: Extract & Read
 
 ### Detect the file type and extract content:
@@ -93,6 +113,8 @@ For each chapter also record:
 - Any **key terms introduced or redefined** in this chapter
 - **Internal cross-references** — does the author refer back to earlier chapters or forward to later ones?
 
+### Checkpoint: Save `extraction.md` to `.readweave/[book-slug]/` with all candidate passages, chapter context, and metadata.
+
 ---
 
 ## Phase 2: Analyze & Select
@@ -143,6 +165,8 @@ After selection, **go back to the source material** and re-read each selected pa
 
 Fix any errors before proceeding. An excerpt with a wrong word is worse than no excerpt at all — it attributes something to the author they didn't say.
 
+### Checkpoint: Save `selection.md` to `.readweave/[book-slug]/` with the argument map, arc, critical context, and all selected excerpts.
+
 ---
 
 ## Phase 3: Write Margin Annotations
@@ -170,6 +194,8 @@ For each selected excerpt, write **2-3 margin notes**. Each note has a **label**
 This voice also applies to all commentary prose: overview slides, discussion questions, and the reading guide.
 
 ### Quality test: Cover the excerpt text. Can someone learn something new from just the margin note? If not, rewrite it.
+
+### Checkpoint: Save `annotations.md` to `.readweave/[book-slug]/` with all annotated excerpts, overview prose, and discussion questions.
 
 ---
 

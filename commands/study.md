@@ -15,6 +15,26 @@ Follow the seven phases below. Phases 5a and 5b are independent and can run in p
 
 ---
 
+## Checkpoint System
+
+Before starting, check for existing checkpoints in `.readweave/[study-slug]/` (derive slug from the study name — e.g., `kuhn-incommensurability`).
+
+**Read the checkpoint reference**: Use the Glob tool to find `**/checkpoints.md` within this plugin's installation directory, then read it for the full format specification.
+
+**Resume logic** — check in reverse order:
+1. If `annotations.md` exists → load it and skip to Phase 5 (output generation)
+2. If `selection.md` exists → load it and skip to Phase 4 (annotations)
+3. If `extraction-[book-slug].md` files exist → load them and skip to Phase 2 (curation). If only some books have extraction checkpoints, extract only the missing ones.
+4. If no checkpoints → start from Phase 1
+
+If resuming, report: "Found checkpoint for [phase]. Resuming from [next phase]..."
+
+If the user's input contains `--fresh`, ignore all checkpoints and start from scratch.
+
+**Save after each phase** — write the checkpoint file in the format specified by the checkpoint reference before proceeding to the next phase.
+
+---
+
 ## Phase 1: Extract & Read All Books
 
 ### For each book file, detect type and extract content in parallel:
@@ -96,6 +116,8 @@ For each chapter also record:
 - Any **key terms introduced or redefined** in this chapter
 - **Internal cross-references** — does the author refer back to earlier chapters or forward to later ones?
 
+### Checkpoint: Save `extraction-[book-slug].md` per book to `.readweave/[study-slug]/` with all candidate passages, chapter context, and metadata.
+
 ---
 
 ## Phase 2: Curate & Analyze
@@ -146,6 +168,8 @@ After selection, **go back to the source material** and re-read each selected pa
 - Is the chapter/section attribution correct?
 
 Fix any errors before proceeding. An excerpt with a wrong word is worse than no excerpt at all — it attributes something to the author they didn't say.
+
+### Checkpoint: Save `selection.md` to `.readweave/[study-slug]/` with per-book argument maps, all selected excerpts, cross-book threads, and reading order analysis.
 
 ---
 
@@ -220,6 +244,8 @@ For each selected excerpt, write **2-3 margin notes**. Follow the same quality s
 - The best margin notes sound like something a well-read friend might write in pencil — brief, specific, genuinely clarifying, never performing cleverness
 
 This voice also applies to all commentary prose: overview slides, transition slides, synthesis slides, and the study guide.
+
+### Checkpoint: Save `annotations.md` to `.readweave/[study-slug]/` with all annotated excerpts (including cross-book notes), overview prose, and discussion questions.
 
 ---
 

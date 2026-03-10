@@ -14,6 +14,26 @@ Follow the six phases below in order.
 
 ---
 
+## Checkpoint System
+
+Before starting, check for existing checkpoints in `.readweave/[playlist-slug]/` (derive slug from the playlist title — lowercase, kebab-case, drop articles).
+
+**Read the checkpoint reference**: Use the Glob tool to find `**/checkpoints.md` within this plugin's installation directory, then read it for the full format specification.
+
+**Resume logic** — check in reverse order:
+1. If `annotations.md` exists → load it and skip to Phase 6 (HTML generation)
+2. If `selection.md` exists → load it and skip to Phase 5 (annotations)
+3. If `extraction-[video-slug].md` files exist → load them and skip to Phase 3 (arc mapping). If only some videos have extraction checkpoints, extract only the missing ones.
+4. If no checkpoints → start from Phase 1
+
+If resuming, report: "Found checkpoint for [phase]. Resuming from [next phase]..."
+
+If the user's input contains `--fresh`, ignore all checkpoints and start from scratch.
+
+**Save after each phase** — write the checkpoint file in the format specified by the checkpoint reference before proceeding to the next phase.
+
+---
+
 ## Phase 1: Discover
 
 ### Fetch the playlist metadata:
@@ -74,6 +94,8 @@ Same five passage types as the watch skill (thesis crystallizations, key argumen
 - Filler, verbal stumbles, or Q&A unless a response is genuinely revelatory
 - Redundant formulations — if the same idea appears across multiple videos, take the strongest version and note the pattern
 
+### Checkpoint: Save `extraction-[video-slug].md` per video to `.readweave/[playlist-slug]/` with all candidate passages, video metadata, and per-video context.
+
 ---
 
 ## Phase 3: Map the Arc
@@ -118,6 +140,8 @@ Proceed with the user's selection.
 3. **The sequence test**: Does the placement of this excerpt make sense given what comes before and after it in the presentation?
 4. **The oral-to-written test**: Does this passage still land on the page, or does it depend entirely on delivery?
 
+### Checkpoint: Save `selection.md` to `.readweave/[playlist-slug]/` with all selected excerpts, arc analysis, cross-video connections, and conceptual weight allocation.
+
 ---
 
 ## Phase 5: Write Margin Annotations
@@ -146,6 +170,8 @@ For each selected excerpt, write **2-3 margin notes**.
 This voice also applies to all commentary prose: overview slides, transition slides, synthesis slides, and discussion questions.
 
 ### At least 25% of margin notes should make cross-video connections. This is what makes a playlist analysis more than a collection of individual video summaries.
+
+### Checkpoint: Save `annotations.md` to `.readweave/[playlist-slug]/` with all annotated excerpts (including cross-video notes), overview prose, and discussion questions.
 
 ---
 
