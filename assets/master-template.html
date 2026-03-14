@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{BOOK_TITLE}} &mdash; ReadWeave Master</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Caveat:wght@400;500;600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
@@ -22,11 +22,11 @@
     --page-shadow: rgba(44, 35, 33, 0.12);
     --note-ink: #6B5D52;
     --note-accent: #9B6B4A;
-    /* Code surface — Catppuccin Mocha */
-    --code-bg: #1E1E2E;
-    --code-text: #CDD6F4;
-    --code-surface: #313244;
-    --code-accent: #89B4FA;
+    /* Code surface — Warm Parchment */
+    --code-bg: #F3EDE4;
+    --code-text: #3D3330;
+    --code-surface: #D9CFC4;
+    --code-accent: #7C4D27;
     --recall-bg: rgba(139, 58, 58, 0.045);
     --challenge-accent: #8B3A3A;
   }
@@ -428,12 +428,12 @@
     overflow-y: auto;
     overflow-x: auto;
     scrollbar-width: thin;
-    scrollbar-color: #313244 transparent;
+    scrollbar-color: var(--code-surface) transparent;
     padding: 1.2em 1.5em !important;
-    border: 1px solid rgba(255,255,255,0.04);
+    border: 1px solid rgba(80,60,40,0.10);
   }
   pre[class*="language-"]::-webkit-scrollbar { width: 4px; height: 4px; }
-  pre[class*="language-"]::-webkit-scrollbar-thumb { background: #313244; border-radius: 4px; }
+  pre[class*="language-"]::-webkit-scrollbar-thumb { background: var(--code-surface); border-radius: 4px; }
 
   code[class*="language-"] {
     font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace !important;
@@ -442,8 +442,20 @@
     text-shadow: none !important;
   }
 
-  /* Code margin notes get blue labels instead of amber */
-  .code-slide .margin-note .note-label { color: #89B4FA; }
+  /* Warm parchment syntax — saturated ink on warm surface */
+  .token.comment, .token.prolog, .token.doctype, .token.cdata { color: #9C8B7A !important; font-style: italic; }
+  .token.punctuation { color: #6B5B50 !important; }
+  .token.property, .token.tag, .token.boolean, .token.number, .token.constant, .token.symbol { color: #8B3A3A !important; }
+  .token.selector, .token.attr-name, .token.string, .token.char, .token.builtin { color: #5B7A2E !important; }
+  .token.operator, .token.entity, .token.url { color: #6B5B50 !important; }
+  .token.atrule, .token.attr-value, .token.keyword { color: #7C4D27 !important; }
+  .token.function, .token.class-name { color: #6E4B8B !important; }
+  .token.regex, .token.important, .token.variable { color: #B8603A !important; }
+  .token.inserted { color: #5B7A2E !important; }
+  .token.deleted { color: #8B3A3A !important; }
+
+  /* Code margin notes */
+  .code-slide .margin-note .note-label { color: #7C4D27; }
 
   /* ───── PREREQUISITES SLIDE ───── */
   .prereq-section {
