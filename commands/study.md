@@ -251,27 +251,18 @@ This voice also applies to all commentary prose: overview slides, transition sli
 
 ## Phase 5a: Generate Markdown Study Guide
 
-Create a comprehensive markdown document with:
+Generate a **lean** quick-reference companion (not a standalone document — the HTML slides carry the full analysis). Keep it short and avoid repeating any passage more than once across the entire document.
+
+Structure:
 
 1. **Title and metadata** — study title, author(s), books covered with publication years
-2. **Opening** — a signature passage that captures the intellectual project's essence
-3. **Study overview** — 3-5 paragraphs on the author's intellectual journey: why these books matter together, what the arc reveals that individual books cannot
-4. **Reading order recommendation** — chronological listing AND recommended study order with rationale for each position
-5. **The intellectual arc** — how the central ideas develop across the corpus, told as a coherent narrative with key quotations from each book
-6. **Conceptual threads** (4-8 sections) — each thread gets:
-   - Explanatory prose tracing the idea across books
-   - 2-4 excerpts from different books showing the evolution
-   - Analysis of how and why the concept changed
-   - Connections to broader intellectual traditions
-7. **Individual book summaries** — for each book (in recommended reading order):
-   - Core thesis (2-3 paragraphs)
-   - Unique contributions (what this book adds that others don't)
-   - 3-5 key quotations
-   - Position in the larger project
-8. **Critical perspectives** — major critiques of the author's project, especially those that engage with the evolution across works
-9. **Unresolved tensions** — questions the author never fully settled
-10. **Discussion questions** — 8-12 questions, at least half requiring knowledge of multiple books
-11. **Key quotations collection** — 20-30 passages organized by theme, drawn from across all books
+2. **Overview** — 1-2 paragraphs: the intellectual arc across these books and why they matter together
+3. **Reading order** — recommended study order with one sentence of rationale per book
+4. **Per-book summaries** — for each book, 2-3 bullet points: core thesis, unique contribution, position in the arc. No quotations here.
+5. **Discussion questions** — 8-12 questions, at least half requiring knowledge of multiple books
+6. **Key quotations** — 15-20 passages organized by theme, each with a one-line note on significance. No passage should appear elsewhere in this document.
+
+Total target length: 3-5 pages when rendered. If a section feels padded, cut it.
 
 Save as `[study-name]-study-guide.md`. Derive the name from the author or unifying theme: e.g., `kuhn-incommensurability-study-guide.md`.
 

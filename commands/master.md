@@ -356,36 +356,22 @@ For the book's 3-5 hardest concepts: a plain-language explanation that would wor
 
 ## Phase 4a: Generate Markdown Mastery Guide
 
+Generate a **lean** quick-reference companion (not a standalone document — the HTML slides carry the full argument and annotations). Keep it short and avoid repeating any passage more than once across the entire document.
+
 **Filename:** `[book-slug]-mastery-guide.md`
 
 **Structure (in order):**
 
 1. **Title and metadata** — book title, author, year, edition
+2. **What this book is** — 1-2 paragraphs: significance, target reader, why this book over alternatives
+3. **Prerequisites** — what to know before reading, grouped by type (math, programming, CS concepts). Bullet points only.
+4. **Concept dependency map** — the full CDM from Phase 3.5b, rendered in markdown
+5. **Active recall section** — all Q&A pairs from Phase 3.5a, organized by category
+6. **Type it yourself challenges** — all challenges from Phase 3.5c
+7. **Key passages** — 10-15 of the most important passages (prose and code), each with a one-line note. No passage should appear elsewhere in this document.
+8. **Next steps** — bullet list of what to read/do after this book
 
-2. **Opening passage** — a signature excerpt from the book (one of the non-negotiable prose excerpts)
-
-3. **What this book is** (3-4 paragraphs) — the book's significance in the field, its target reader, how it fits relative to adjacent books, why this book rather than alternatives
-
-4. **Prerequisites** — what to know before reading, derived from the concept dependency map. Group by type: mathematical background, programming experience, CS concepts
-
-5. **Table of contents** — linked sections
-
-6. **Concept dependency map** — the full CDM from Phase 3.5b, rendered in markdown
-
-7. **Core argument walkthrough** — thematic, not chapter-by-chapter. 8-12 sections, each covering a conceptual theme. Each section includes:
-   - Explanatory prose contextualizing the concept
-   - 2-3 direct excerpts from the book (both prose and code)
-   - Connections to other areas of CS or software practice
-
-8. **Critical perspectives** — 3-5 critiques from respected sources. Look for: Hacker News threads where notable contributors discussed this book, ACM / IEEE reviews, academic responses, known limitations acknowledged by the author themselves. Present each fairly.
-
-9. **Active recall section** — all Q&A pairs from Phase 3.5a, organized by category with brief introductory sentence per category
-
-10. **Type it yourself challenges** — all challenges from Phase 3.5c
-
-11. **Key passages** — 15-25 of the most important passages, both prose and code, gathered for reference
-
-12. **Next steps** — what to read and do after this book to go deeper. Include: more advanced treatments of the same topic, practical projects that apply these ideas, adjacent topics that build on this foundation
+Total target length: varies with active recall and challenges, but prose sections should be minimal. If a section feels padded, cut it.
 
 ---
 

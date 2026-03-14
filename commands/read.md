@@ -201,21 +201,17 @@ This voice also applies to all commentary prose: overview slides, discussion que
 
 ## Phase 4a: Generate Markdown Reading Guide
 
-Create a comprehensive markdown document with:
+Generate a **lean** quick-reference companion (not a standalone document — the HTML slides carry the full argument). Keep it short and avoid repeating any passage more than once across the entire document.
 
-1. **Title and metadata** — book title, author, year, edition info
-2. **Opening quotation** — a signature passage from the book
-3. **Overview** — 3-4 paragraphs on the book's significance, influence, and origin story
-4. **Table of contents** — linked sections
-5. **Core argument walkthrough** — the book's main thesis explained with key quotations, organized thematically (NOT chapter-by-chapter summary, but conceptual sections that trace the argument)
-6. **Thematic sections** (8-12) — each section covers a key concept with:
-   - Explanatory prose contextualizing the idea
-   - 2-4 direct quotations from the book
-   - Connections to broader intellectual traditions
-7. **Critical perspectives** — 3-5 major critiques from respected scholars, with their arguments fairly presented
-8. **Beyond the book** — where the ideas resonate in other fields or contemporary life
-9. **Discussion questions** — 6-10 thought-provoking questions for group discussion
-10. **Key quotations collection** — 15-20 of the most important passages gathered for reference
+Structure:
+
+1. **Title and metadata** — book title, author, year, edition
+2. **Overview** — 1-2 paragraphs: what the book argues, why it matters, who it's for
+3. **Argument map** — a compact outline of the book's structure and how ideas connect (use nested bullet points, not full prose sections)
+4. **Discussion questions** — 6-10 thought-provoking questions for group discussion
+5. **Key quotations** — 10-15 of the most important passages, each with a one-line note on why it matters. No passage should appear elsewhere in this document.
+
+Total target length: 2-4 pages when rendered. If a section feels padded, cut it.
 
 Save as `[book-name]-reading-guide.md` in the working directory. Use kebab-case for the filename.
 
