@@ -391,12 +391,49 @@ For the book's 3-5 hardest concepts: a plain-language explanation that would wor
 
 ## Phase 4b: Generate HTML Master Presentation
 
+**This phase uses the Scaffold-Batch-Assemble pattern.** Read `**/chunked-html-generation.md` within this plugin's installation directory for the full specification. The steps below are master-specific.
+
+### Step 1: Prepare
+
 1. **Read the template**: Use the Glob tool to find `**/master-template.html` within this plugin's installation directory, then read it with the Read tool.
 2. **Read the design guide**: Use the Glob tool to find `**/read-design-guide.md` within this plugin's installation directory, then read it.
-3. **Replace placeholders**: `{{BOOK_TITLE}}` and `{{SIDEBAR_SUBTITLE}}`
-4. **Populate slides** inside the `<div class="slides-wrapper">` between the template comments.
+3. **Read the chunked generation reference**: Use the Glob tool to find `**/chunked-html-generation.md` within this plugin's installation directory, then read it.
+4. **Replace placeholders**: `{{BOOK_TITLE}}` and `{{SIDEBAR_SUBTITLE}}`
 
-### Slide structure (~40-50 slides total):
+### Step 2: Plan batches
+
+Plan 5-7 batches based on the annotated excerpts from `annotations.md`:
+
+| Batch | Slides | Content |
+|-------|--------|---------|
+| 1 | 3 | Title (slide 0, `active`), Overview (concept dependency diagram), Prerequisites |
+| 2 | 7-8 | Prose excerpts + code slides, early chapters |
+| 3 | 7-8 | Prose excerpts + code slides, middle chapters |
+| 4 | 7-8 | Prose excerpts + code slides, late chapters |
+| 5 | up to 8 | Remaining content slides (overflow from above) |
+| 6 | 3-5 | Recall slides (2-3), Challenge slides (1-2) |
+| 7 | 2-3 | Discussion, Closing |
+
+Distribute prose excerpts and code slides **interleaved by chapter order** — not all prose then all code. If the book has fewer chapters, merge batches 4-5 into one.
+
+### Step 3: Write scaffold
+
+Write the HTML file with the template content and batch markers inside `<div class="slides-wrapper">`. Include the batch manifest comment. See the chunked generation reference for the exact format.
+
+### Step 4: Launch batch agents
+
+Launch **all batch agents in a single message** (parallel Agent tool calls). Each agent receives the prompt template from the chunked generation reference, with:
+- The design guide path
+- The scaffold file path
+- Its batch marker text (exact old_string for the Edit)
+- Only the EX-N entries assigned to its batch from `annotations.md`
+- For batch 6: the recall prompts (AR-N) and challenges (TY-N) from `annotations.md`
+
+### Step 5: Verify
+
+After all agents complete, follow the verification checklist from the chunked generation reference.
+
+### Slide types (~40-50 slides total):
 
 | Slide | Type | Class |
 |-------|------|-------|

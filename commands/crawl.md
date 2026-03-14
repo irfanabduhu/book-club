@@ -176,12 +176,11 @@ This voice also applies to all commentary prose: overview slides, transition sli
 
 ## Phase 6: Generate HTML Slides
 
-### Chunked generation strategy:
+### Chunked generation strategy
 
-For crawls with 4+ threads, use chunked generation:
-1. Generate structural slides (title, map, thread transitions, discussion, closing) directly
-2. Launch parallel agents per thread to generate content slides
-3. Assemble into the final HTML file
+**This phase uses the Scaffold-Batch-Assemble pattern.** Read `**/chunked-html-generation.md` within this plugin's installation directory for the full specification.
+
+**Crawl-specific batch planning:** One content batch per thread (max 8 slides each). Structural batches: opening (title, map) and closing (discussion, closing).
 
 ### Setup:
 

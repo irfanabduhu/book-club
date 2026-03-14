@@ -281,15 +281,9 @@ Save as `[study-name]-study-guide.md`. Derive the name from the author or unifyi
 
 ### Chunked generation strategy
 
-For studies with 4+ books, generating all slides in a single agent risks timeout. Use **chunked generation** instead:
+**This phase uses the Scaffold-Batch-Assemble pattern.** Read `**/chunked-html-generation.md` within this plugin's installation directory for the full specification.
 
-1. **Prepare the scaffold**: Read the template, replace placeholders, and generate the structural slides (title, library, roadmap, reading order, discussion, closing) directly in the main context. Write this scaffold to the output file.
-
-2. **Generate content slides in batches**: Launch parallel agents, each responsible for a **conceptual chunk** (e.g., one thread or 2-3 books' worth of excerpt/evolution slides). Each agent returns its batch of slide HTML as raw text.
-
-3. **Assemble**: Insert the batched slide HTML into the scaffold at the correct positions, maintaining the narrative arc planned in Phase 3c.
-
-For studies with 2-3 books, single-pass generation is acceptable if the total slide count stays under ~35.
+**Study-specific batch planning:** Organize content batches by thread or book grouping (1-2 books per batch, max 8 slides each). Structural batches: opening (title, library, roadmap) and closing (reading order, discussion, closing).
 
 ### Setup
 

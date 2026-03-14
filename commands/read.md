@@ -223,14 +223,47 @@ Save as `[book-name]-reading-guide.md` in the working directory. Use kebab-case 
 
 ## Phase 4b: Generate HTML Slides
 
-1. **Read the template**: Use the Glob tool to find `**/gist-template.html` within this plugin's installation directory, then read it with the Read tool. This file contains the full HTML/CSS/JS scaffold for the slide presentation.
-2. **Read the design guide**: Use the Glob tool to find `**/read-design-guide.md` within this plugin's installation directory, then read it. It documents the HTML structure for each slide type.
-3. **Replace placeholders**:
+**This phase uses the Scaffold-Batch-Assemble pattern.** Read `**/chunked-html-generation.md` within this plugin's installation directory for the full specification. The steps below are read-specific.
+
+### Step 1: Prepare
+
+1. **Read the template**: Use the Glob tool to find `**/gist-template.html` within this plugin's installation directory, then read it with the Read tool.
+2. **Read the design guide**: Use the Glob tool to find `**/read-design-guide.md` within this plugin's installation directory, then read it.
+3. **Read the chunked generation reference**: Use the Glob tool to find `**/chunked-html-generation.md` within this plugin's installation directory, then read it.
+4. **Replace placeholders**:
    - `{{BOOK_TITLE}}` → the book's title (used in both `<title>` and sidebar header)
    - `{{SIDEBAR_SUBTITLE}}` → "Author Name, Year"
-4. **Populate slides** inside the `<div class="slides-wrapper">` between the template comments:
 
-### Slide structure:
+### Step 2: Plan batches
+
+Plan 3-5 batches based on the annotated excerpts from `annotations.md`:
+
+| Batch | Slides | Content |
+|-------|--------|---------|
+| 1 | 2 | Title (slide 0, `active`), Overview |
+| 2 | up to 8 | Excerpt slides, first half of chapters |
+| 3 | up to 8 | Excerpt slides, second half of chapters |
+| 4 | 2-3 | Discussion, Closing |
+
+For books with 25+ excerpts, add a batch 5 to keep content batches at max 8 slides each.
+
+### Step 3: Write scaffold
+
+Write the HTML file with the template content and batch markers inside `<div class="slides-wrapper">`. Include the batch manifest comment. See the chunked generation reference for the exact format.
+
+### Step 4: Launch batch agents
+
+Launch **all batch agents in a single message** (parallel Agent tool calls). Each agent receives the prompt template from the chunked generation reference, with:
+- The design guide path
+- The scaffold file path
+- Its batch marker text (exact old_string for the Edit)
+- Only the EX-N entries assigned to its batch from `annotations.md`
+
+### Step 5: Verify
+
+After all agents complete, follow the verification checklist from the chunked generation reference.
+
+### Slide types:
 - **Slide 0 — Title**: `class="slide active no-margin"` — book title, author, year, opening quotation. Include `begin-hint`.
 - **Slide 1 — Overview**: `class="slide no-margin"` — the book's core argument. Use a visual diagram (cycle-diagram, concept-cards, or similar) plus brief commentary. Frame what follows: "The following pages present [Author]'s argument *in [their] own words*."
 - **Slides 2 through N — Excerpts**: `class="slide"` — direct book excerpts with margin annotations. This is the bulk of the presentation (20-30 slides). Each slide has:
@@ -250,7 +283,7 @@ Save as `[book-name]-reading-guide.md` in the working directory. Use kebab-case 
 - Use `<em>` for italics within excerpts (book titles, emphasis)
 - Each slide needs a descriptive `data-title` attribute for the sidebar TOC
 
-Save as `[book-name]-gist.html` in the working directory. Derive `[book-name]` from the book title: lowercase, kebab-case, drop articles (a, an, the). For example, *The Structure of Scientific Revolutions* becomes `structure-scientific-revolutions-gist.html`.
+**Filename:** `[book-name]-gist.html`. Derive `[book-name]` from the book title: lowercase, kebab-case, drop articles (a, an, the). For example, *The Structure of Scientific Revolutions* becomes `structure-scientific-revolutions-gist.html`.
 
 ---
 

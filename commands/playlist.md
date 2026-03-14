@@ -177,12 +177,11 @@ This voice also applies to all commentary prose: overview slides, transition sli
 
 ## Phase 6: Generate HTML Slides
 
-### Chunked generation strategy:
+### Chunked generation strategy
 
-For playlists with 10+ videos, use chunked generation:
-1. Generate structural slides (title, map, transitions, discussion, closing) directly
-2. Launch parallel agents in batches to generate content slides for groups of videos
-3. Assemble into the final HTML file
+**This phase uses the Scaffold-Batch-Assemble pattern.** Read `**/chunked-html-generation.md` within this plugin's installation directory for the full specification.
+
+**Playlist-specific batch planning:** One content batch per video cluster (max 8 slides each). Structural batches: opening (title, arc overview) and closing (discussion, closing).
 
 ### Setup:
 
