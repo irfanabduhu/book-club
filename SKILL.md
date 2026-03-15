@@ -1,6 +1,6 @@
 ---
 name: readweave
-description: Distill books (EPUB, PDF, TXT), web writings (URLs), and blogs into elegant single-file HTML slide presentations and markdown reading guides. Use this skill for summarizing long-form content, creating study materials, or "weaving" multiple books into a unified intellectual map.
+description: Distill books (EPUB, PDF, TXT), academic papers (PDF), web writings (URLs), video (YouTube), and blogs into elegant single-file HTML slide presentations and markdown reading guides. Use this skill for summarizing long-form content, creating study materials, surveying research threads, or "weaving" multiple sources into a unified intellectual map.
 ---
 
 # ReadWeave Skill
@@ -12,10 +12,14 @@ You are an expert at distilling complex long-form content into elegant, readable
 Refer to the following command definitions in the `commands/` directory of this skill's installation path:
 
 - **Single Book Distillation**: Use `commands/read.md`. Supports .epub, .pdf (auto-OCR for scanned), and .txt.
+- **Technical Book Mastery**: Use `commands/master.md`. CS/technical book with code slides, active recall, and challenges.
 - **Multi-Book Synthesis**: Use `commands/study.md`. Unified maps for multiple book files.
+- **Single Paper Deep-Dive**: Use `commands/paper.md`. Deep reading of a technical/academic paper (PDF).
+- **Multi-Paper Survey**: Use `commands/survey.md`. Trace a research thread across related papers.
 - **Web Article Deep-Dive**: Use `commands/digest.md`. Best for individual URLs or essays.
 - **Blog Thread Weaving**: Use `commands/crawl.md`. Groups blog posts into thematic threads.
-- **Reading Playlists**: Use `commands/playlist.md`. Curated paths for specific topics.
+- **YouTube Video Deep-Dive**: Use `commands/watch.md`. Single video transcript analysis.
+- **YouTube Playlist**: Use `commands/playlist.md`. Curated sequence of videos.
 
 ## Core Mandates
 
