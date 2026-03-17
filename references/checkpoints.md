@@ -24,6 +24,18 @@ ReadWeave saves intermediate results to `.readweave/[slug]/` in the working dire
     annotations.md                 # Combined excerpts with margin notes
 ```
 
+### Discovery-based commands (research)
+
+```
+.readweave/
+  [topic-slug]-research/
+    discovery.md                   # After Phase 1: search queries + candidate URLs
+    evaluation.md                  # After Phase 2: scored candidates + approved source library
+    extraction-[source-slug].md   # Per-source extraction
+    selection.md                   # Combined curated excerpts + analysis
+    annotations.md                 # Combined excerpts with margin notes
+```
+
 ## Slug Rules
 
 - Derive from the source: book filename (without extension), video title, article title, study name

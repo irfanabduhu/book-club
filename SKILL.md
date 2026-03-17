@@ -17,6 +17,7 @@ Refer to the following command definitions in the `commands/` directory of this 
 - **Single Paper Deep-Dive**: Use `commands/paper.md`. Deep reading of a technical/academic paper (PDF).
 - **Multi-Paper Survey**: Use `commands/survey.md`. Trace a research thread across related papers.
 - **Web Article Deep-Dive**: Use `commands/digest.md`. Best for individual URLs or essays.
+- **Topic Research**: Use `commands/research.md`. Discovers high-quality sources across the web and builds a curated learning path.
 - **Blog Thread Weaving**: Use `commands/crawl.md`. Groups blog posts into thematic threads.
 - **YouTube Video Deep-Dive**: Use `commands/watch.md`. Single video transcript analysis.
 - **YouTube Playlist**: Use `commands/playlist.md`. Curated sequence of videos.

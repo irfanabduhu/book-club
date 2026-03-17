@@ -205,6 +205,15 @@ For books with 30+ excerpts selected, add a 5th batch to keep each content batch
 | 2-N | One batch per video cluster (max 8 slides each) |
 | N+1 | Discussion, Closing |
 
+### `research` (55-85 slides, batches by learning stage)
+
+| Batch | Content |
+|-------|---------|
+| 1 | Title, Source Library, Learning Path Roadmap (structural opening) |
+| 2-N | One batch per learning stage (max 8 slides each, including stage transition + excerpts + evolution slides) |
+| N+1 | Synthesis slides (cross-stage analysis) |
+| N+2 | Bibliography, Discussion, Closing (structural closing) |
+
 ---
 
 ## Troubleshooting
