@@ -1,15 +1,38 @@
 # ReadWeave Plugin
 
-A unified plugin for both Claude Code and OpenCode that distills books and web writings into elegant presentations and reading guides.
+A unified plugin for both Claude Code and OpenCode that distills books, papers, web writings, and videos into elegant presentations and reading guides.
 
 ## Commands
 
-| Command             | Scope                 | Input                           | Output                                          |
-| ------------------- | --------------------- | ------------------------------- | ----------------------------------------------- |
-| `/readweave:read`   | Single book           | `.epub`, `.pdf`, or `.txt` file | HTML slides + markdown reading guide            |
-| `/readweave:study`  | Multiple books        | Multiple book files             | Unified HTML slides + markdown study guide      |
-| `/readweave:digest` | Single web article    | URL to article or essay         | HTML slides                                     |
-| `/readweave:crawl`  | Blog or writings page | URL to index/articles page      | Unified HTML slides grouped by thematic threads |
+### Books
+
+| Command              | Scope            | Input                            | Output                                     |
+| -------------------- | ---------------- | -------------------------------- | ------------------------------------------ |
+| `/readweave:read`    | Single book      | `.epub`, `.pdf`, or `.txt` file  | HTML slides + markdown reading guide       |
+| `/readweave:master`  | Technical book   | `.epub`, `.pdf`, or `.txt` file  | HTML slides + markdown mastery guide       |
+| `/readweave:study`   | Multiple books   | Multiple book files              | Unified HTML slides + markdown study guide |
+
+### Papers
+
+| Command              | Scope            | Input                            | Output                                     |
+| -------------------- | ---------------- | -------------------------------- | ------------------------------------------ |
+| `/readweave:paper`   | Single paper     | `.pdf` or paper file             | HTML slides                                |
+| `/readweave:survey`  | Multiple papers  | Multiple `.pdf` or paper files   | Unified HTML slides + markdown survey guide |
+
+### Web
+
+| Command              | Scope                 | Input                      | Output                                          |
+| -------------------- | --------------------- | -------------------------- | ----------------------------------------------- |
+| `/readweave:digest`  | Single web article    | URL to article or essay    | HTML slides                                     |
+| `/readweave:crawl`   | Blog or writings page | URL to index/articles page | Unified HTML slides grouped by thematic threads |
+| `/readweave:research`| Topic from scratch    | Topic description          | HTML slides tracing a curated learning path     |
+
+### Video
+
+| Command               | Scope             | Input                | Output             |
+| --------------------- | ----------------- | -------------------- | ------------------ |
+| `/readweave:watch`    | Single video      | YouTube video URL    | HTML slides        |
+| `/readweave:playlist` | YouTube playlist  | YouTube playlist URL | Unified HTML slides |
 
 ## Prerequisites
 
@@ -46,6 +69,20 @@ git clone https://github.com/irfanabduhu/readweave.git ~/readweave
 claude --plugin-dir ~/readweave
 ```
 
+### For Pi
+
+**Add to your project:**
+
+```bash
+git clone https://github.com/irfanabduhu/readweave.git .pi/skills/readweave
+```
+
+**Install globally:**
+
+```bash
+git clone https://github.com/irfanabduhu/readweave.git ~/.pi/agent/skills/readweave
+```
+
 ### For OpenCode
 
 **Add to your project:**
@@ -70,14 +107,32 @@ cp -r path/to/readweave/commands/. ~/.config/opencode/commands/
 # Distill a single book
 /readweave:read path/to/book.epub
 
+# Master a technical book (active recall cards, code slides, challenges)
+/readweave:master path/to/sicp.pdf
+
 # Study multiple books together
 /readweave:study path/to/book1.pdf path/to/book2.epub path/to/book3.txt
+
+# Deep dive into an academic paper
+/readweave:paper path/to/paper.pdf
+
+# Survey a research thread across multiple papers
+/readweave:survey path/to/paper1.pdf path/to/paper2.pdf path/to/paper3.pdf
 
 # Deep dive into a web article
 /readweave:digest https://paulgraham.com/greatwork.html
 
 # Crawl a blog and weave articles into thematic threads
 /readweave:crawl https://paulgraham.com/articles.html
+
+# Research a topic from scratch (discovers its own sources)
+/readweave:research "distributed consensus algorithms"
+
+# Deep dive into a YouTube video
+/readweave:watch https://www.youtube.com/watch?v=example
+
+# Analyze a YouTube playlist as a curated sequence
+/readweave:playlist https://www.youtube.com/playlist?list=example
 ```
 
 ## How it works
@@ -89,6 +144,14 @@ cp -r path/to/readweave/commands/. ~/.config/opencode/commands/
 4. **Generate Outputs** — Creates both the markdown reading guide and HTML slide presentation in parallel
 5. **Refine** — Audits margin note quality, checks flow, verifies consistency between outputs
 
+### /readweave:master — Technical book mastery
+1. **Extract** — Parallel chapter extraction with code block detection
+2. **Analyze & Select** — Identifies key concepts, code examples, and proof strategies
+3. **Annotate** — Writes margin notes connecting theory to practice
+4. **Build Active Learning Materials** — Creates recall cards, concept dependency maps, and typed challenges
+5. **Generate Outputs** — Creates mastery guide and HTML presentation in parallel
+6. **Refine** — Audits challenge quality, checks concept coverage
+
 ### /readweave:study — Multi-book intellectual tracing
 1. **Extract & Read All Books** — Parallel extraction across all books simultaneously
 2. **Curate & Analyze** — Builds argument maps per book, selects 15-25 excerpts each
@@ -96,6 +159,21 @@ cp -r path/to/readweave/commands/. ~/.config/opencode/commands/
 4. **Margin Annotations** — Writes cross-book annotations showing how ideas evolve
 5. **Generate Outputs** — Creates unified study guide and slide presentation (chunked generation for 4+ books)
 6. **Refine** — Audits cross-references, checks balance, verifies arc coherence
+
+### /readweave:paper — Single paper deep dive
+1. **Read & Extract** — Reads paper, extracts key claims, methodology, and results
+2. **Analyze & Select** — Maps the argument structure, selects key passages
+3. **Margin Annotations** — Writes annotations connecting to the broader research landscape
+4. **Generate HTML Slides** — Produces a single-file presentation
+
+### /readweave:survey — Multi-paper research thread
+1. **Read & Extract All Papers** — Parallel extraction across all papers
+2. **Curate & Analyze** — Builds method/result maps per paper, selects key excerpts
+3. **Cross-Paper Analysis** — Traces how methods evolve, results build, and understanding deepens
+4. **Determine Representation Weight** — Balances coverage across papers
+5. **Margin Annotations** — Writes cross-paper annotations showing field evolution
+6. **Generate Outputs** — Creates survey guide and HTML presentation in parallel
+7. **Refine** — Audits citation landscape, checks balance
 
 ### /readweave:digest — Single article deep dive
 1. **Fetch & Extract** — Retrieves article, extracts 8-20 candidate passages
@@ -111,12 +189,37 @@ cp -r path/to/readweave/commands/. ~/.config/opencode/commands/
 5. **Margin Annotations** — Writes cross-article and cross-thread annotations
 6. **Generate HTML Slides** — Produces a unified presentation with thread transitions and evolution slides
 
+### /readweave:research — Topic research from scratch
+1. **Scout** — Discovers candidate sources across the web (articles, blogs, papers, videos)
+2. **Evaluate** — Selects high-quality "gems" based on signal density and insight
+3. **Fetch & Extract** — Retrieves and extracts key passages from selected sources
+4. **Map & Organize** — Builds a learning path from foundations to frontiers
+5. **Curate & Select** — Selects excerpts ordered by conceptual progression
+6. **Margin Annotations** — Writes cross-source annotations
+7. **Generate HTML Slides** — Produces a comprehensive presentation tracing the learning path
+8. **Refine** — Audits coverage, checks path coherence
+
+### /readweave:watch — YouTube video deep dive
+1. **Fetch & Extract** — Retrieves transcript, identifies key moments and passages
+2. **Analyze & Select** — Maps the argument, selects best segments
+3. **Margin Annotations** — Writes contextual, analytical margin notes
+4. **Generate HTML Slides** — Produces a single-file presentation
+
+### /readweave:playlist — YouTube playlist analysis
+1. **Discover** — Fetches playlist metadata, identifies all videos in sequence
+2. **Fetch & Extract** — Parallel agents extract transcripts per video
+3. **Map the Arc** — Traces how ideas build across the curator's intended sequence
+4. **Curate & Select** — Selects excerpts showing conceptual progression across videos
+5. **Margin Annotations** — Writes cross-video annotations showing idea development
+6. **Generate HTML Slides** — Produces a unified presentation following the playlist arc
+
 ## Supported formats
 
 - `.epub` (extracted and read chapter-by-chapter)
 - `.pdf` — text-based (read directly) and scanned/image-based (auto-OCR'd, then read)
 - Plain text / `.txt`
 - Web URLs (articles, blog posts, writings pages)
+- YouTube URLs (individual videos and playlists)
 
 ## Design
 
