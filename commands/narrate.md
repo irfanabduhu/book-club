@@ -50,7 +50,7 @@ If the user's input contains `--fresh`, ignore all checkpoints and start from sc
 
 ### Extract candidate passages:
 
-Collect **15-400 candidate passages** depending on work length and density.
+Collect **15-100 candidate passages** depending on work length and density.
 
 For each candidate passage, capture:
 - The **exact text** (60-200 words), preserving the author's wording precisely
